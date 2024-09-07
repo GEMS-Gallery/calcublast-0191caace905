@@ -1,4 +1,18 @@
+type Tweet = 
+ record {
+   author: text;
+   comments: int;
+   content: text;
+   handle: text;
+   id: int;
+   likes: int;
+   retweets: int;
+   timestamp: int;
+ };
 service : {
-  calculate: (float64, float64, text) -> (opt float64);
-  clear: () -> ();
+  createTweet: (text, text, text) -> (Tweet);
+  deleteTweet: (int) -> (bool);
+  getProfileStats: () -> (int, int, int) query;
+  getTweets: () -> (vec Tweet) query;
+  updateTweetStats: (int, int, int, int) -> (bool);
 }
